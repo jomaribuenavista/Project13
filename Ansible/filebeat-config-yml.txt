@@ -1,0 +1,2075 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red56\green185\blue199;\red0\green0\blue0;\red255\green255\blue255;
+}
+{\*\expandedcolortbl;;\cssrgb\c25544\c77008\c82022;\csgray\c0;\csgray\c100000;
+}
+\margl1440\margr1440\vieww12080\viewh14400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 ####################### Filebeat Configuration ############################\cf3 \
+\cf2 # This file is a full configuration example documenting all non-deprecated\cf3 \
+\cf2 # options in comments. For a shorter configuration example, that contains only\cf3 \
+\cf2 # the most common options, please see filebeat.yml in the same directory.\cf3 \
+\cf2 #\cf3 \
+\cf2 # You can find the full configuration reference here:\cf3 \
+\cf2 # https://www.elastic.co/guide/en/beats/filebeat/index.html\cf3 \
+filebeat.config.modules:\
+  path: $\{path.config\}/modules.d/*.yml\
+\
+\cf2 #==========================  Modules configuration =============================\cf3 \
+filebeat.modules:\
+\
+\cf2 #-------------------------------- System Module --------------------------------\cf3 \
+\cf2 #- module: system\cf3 \
+\cf2   # Syslog\cf3 \
+\cf2   #syslog:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Authorization logs\cf3 \
+\cf2   #auth:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #-------------------------------- Apache Module --------------------------------\cf3 \
+\cf2 #- module: apache\cf3 \
+\cf2   # Access logs\cf3 \
+\cf2   #access:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Error logs\cf3 \
+\cf2   #error:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\cf2 #-------------------------------- Auditd Module --------------------------------\cf3 \
+\cf2 #- module: auditd\cf3 \
+\cf2   #log:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #---------------------------- Elasticsearch Module ----------------------------\cf3 \
+- module: elasticsearch\
+\cf2   # Server log\cf3 \
+  server:\
+    enabled: true\
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+  gc:\
+    enabled: true\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+  audit:\
+    enabled: true\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+  slowlog:\
+    enabled: true\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+  deprecation:\
+    enabled: true\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #------------------------------- Haproxy Module -------------------------------\cf3 \
+- module: haproxy\
+\cf2   # All logs\cf3 \
+  log:\
+    enabled: true\
+\
+\cf2     # Set which input to use between syslog (default) or file.\cf3 \
+\cf2     #var.input:\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\
+    # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #-------------------------------- Icinga Module --------------------------------\cf3 \
+\cf2 #- module: icinga\cf3 \
+\cf2   # Main logs\cf3 \
+\cf2   #main:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Debug logs\cf3 \
+\cf2   #debug:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Startup logs\cf3 \
+\cf2   #startup:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #--------------------------------- IIS Module ---------------------------------\cf3 \
+\cf2 #- module: iis\cf3 \
+\cf2   # Access logs\cf3 \
+\cf2   #access:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Error logs\cf3 \
+\cf2   #error:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #-------------------------------- Kafka Module --------------------------------\cf3 \
+- module: kafka\
+\cf2   # All logs\cf3 \
+  log:\
+    enabled: true\
+\
+\cf2     # Set custom paths for Kafka. If left empty,\cf3 \
+\cf2     # Filebeat will look under /opt.\cf3 \
+\cf2     #var.kafka_home:\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #-------------------------------- Kibana Module --------------------------------\cf3 \
+- module: kibana\
+\cf2   # All logs\cf3 \
+  log:\
+    enabled: true\
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #------------------------------- Logstash Module -------------------------------\cf3 \
+\cf2 #- module: logstash\cf3 \
+\cf2   # logs\cf3 \
+\cf2   #log:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     # var.paths:\cf3 \
+\
+\cf2   # Slow logs\cf3 \
+\cf2   #slowlog:\cf3 \
+\cf2     #enabled: true\cf3 \
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #------------------------------- Mongodb Module -------------------------------\cf3 \
+\cf2 #- module: mongodb\cf3 \
+\cf2   # Logs\cf3 \
+\cf2   #log:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #-------------------------------- MySQL Module --------------------------------\cf3 \
+\cf2 #- module: mysql\cf3 \
+\cf2   # Error logs\cf3 \
+\cf2   #error:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Slow logs\cf3 \
+\cf2   #slowlog:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\cf2 #--------------------------------- Nats Module ---------------------------------\cf3 \
+- module: nats\
+\cf2   # All logs\cf3 \
+  log:\
+    enabled: true\
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #-------------------------------- Nginx Module --------------------------------\cf3 \
+\cf2 #- module: nginx\cf3 \
+\cf2   # Access logs\cf3 \
+\cf2   #access:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2   # Error logs\cf3 \
+\cf2   #error:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #------------------------------- Osquery Module -------------------------------\cf3 \
+- module: osquery\
+  result:\
+    enabled: true\
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # If true, all fields created by this module are prefixed with\cf3 \
+\cf2     # `osquery.result`. Set to false to copy the fields in the root\cf3 \
+\cf2     # of the document. The default is true.\cf3 \
+\cf2     #var.use_namespace: true\cf3 \
+\
+\cf2 #------------------------------ PostgreSQL Module ------------------------------\
+#- module: postgresql\cf3 \
+\cf2   # Logs\cf3 \
+\cf2   #log:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\cf2 #-------------------------------- Redis Module --------------------------------\cf3 \
+\cf2 #- module: redis\cf3 \
+\cf2   # Main logs\cf3 \
+\cf2   #log:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths: ["/var/log/redis/redis-server.log*"]\cf3 \
+\
+\cf2   # Slow logs, retrieved via the Redis API (SLOWLOG)\cf3 \
+\cf2   #slowlog:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # The Redis hosts to connect to.\cf3 \
+\cf2     #var.hosts: ["localhost:6379"]\cf3 \
+\
+\cf2     # Optional, the password to use when connecting to Redis.\cf3 \
+\cf2     #var.password:\cf3 \
+\
+\cf2 #----------------------------- Google Santa Module -----------------------------\cf3 \
+- module: santa\
+  log:\
+    enabled: true\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the the default path.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2 #------------------------------- Traefik Module -------------------------------\cf3 \
+\cf2 #- module: traefik\cf3 \
+\cf2   # Access logs\cf3 \
+\cf2   #access:\cf3 \
+\cf2     #enabled: true\cf3 \
+\
+\cf2     # Set custom paths for the log files. If left empty,\cf3 \
+\cf2     # Filebeat will choose the paths depending on your OS.\cf3 \
+\cf2     #var.paths:\cf3 \
+\
+\cf2     # Input configuration (advanced). Any input configuration option\cf3 \
+\cf2     # can be added under this section.\cf3 \
+\cf2     #input:\cf3 \
+\
+\
+\cf2 #=========================== Filebeat inputs =============================\
+# List of inputs to fetch data.\cf3 \
+filebeat.inputs:\
+\cf2 # Each - is an input. Most options can be set at the input level, so\cf3 \
+\cf2 # you can use different inputs for various configurations.\cf3 \
+\cf2 # Below are the input specific configurations.\cf3 \
+\
+\cf2 # Type of the files. Based on this the way the file is read is decided.\cf3 \
+\cf2 # The different types cannot be mixed in one input\cf3 \
+\cf2 #\cf3 \
+\cf2 # Possible options are:\cf3 \
+\cf2 # * log: Reads every line of the log file (default)\cf3 \
+\cf2 # * stdin: Reads the standard in\cf3 \
+\
+\cf2 #------------------------------ Log input --------------------------------\cf3 \
+- type: log\
+\
+\cf2   # Change to true to enable this input configuration.\cf3 \
+  enabled: false\
+\
+\cf2   # Paths that should be crawled and fetched. Glob based paths.\cf3 \
+\cf2   # To fetch all ".log" files from a specific level of subdirectories\cf3 \
+\cf2   # /var/log/*/*.log can be used.\cf3 \
+\cf2   # For each file found under this path, a harvester is started.\cf3 \
+\cf2   # Make sure not file is defined twice as this can lead to unexpected behaviour.\cf3 \
+  paths:\
+    - /var/log/*.log\
+\cf2     #- c:\\programdata\\elasticsearch\\logs\\*\cf3 \
+\
+\cf2   # Configure the file encoding for reading files with international characters\cf3 \
+\cf2   # following the W3C recommendation for HTML5 (http://www.w3.org/TR/encoding).\cf3 \
+\cf2   # Some sample encodings:\cf3 \
+\cf2   #   plain, utf-8, utf-16be-bom, utf-16be, utf-16le, big5, gb18030, gbk,\cf3 \
+\cf2   #    hz-gb-2312, euc-kr, euc-jp, iso-2022-jp, shift-jis, ...\cf3 \
+\cf2   #encoding: plain\cf3 \
+\
+\
+\cf2   # Exclude lines. A list of regular expressions to match. It drops the lines that are\cf3 \
+\cf2   # matching any regular expression from the list. The include_lines is called before\cf3 \
+\cf2   # exclude_lines. By default, no lines are dropped.\cf3 \
+\cf2   #exclude_lines: ['^DBG']\cf3 \
+\
+\cf2   # Include lines. A list of regular expressions to match. It exports the lines that are\cf3 \
+\cf2   # matching any regular expression from the list. The include_lines is called before\cf3 \
+\cf2   # exclude_lines. By default, all the lines are exported.\cf3 \
+\cf2   #include_lines: ['^ERR', '^WARN']\cf3 \
+\
+\cf2   # Exclude files. A list of regular expressions to match. Filebeat drops the files that\cf3 \
+\cf2   # are matching any regular expression from the list. By default, no files are dropped.\cf3 \
+\cf2   #exclude_files: ['.gz$']\cf3 \
+\
+\cf2   # Optional additional fields. These fields can be freely picked\cf3 \
+\cf2   # to add additional information to the crawled log files for filtering\cf3 \
+\cf2   #fields:\cf3 \
+\cf2   #  level: debug\cf3 \
+\cf2   #  review: 1\cf3 \
+\
+\cf2   # Set to true to store the additional fields as top level fields instead\cf3 \
+\cf2   # of under the "fields" sub-dictionary. In case of name conflicts with the\cf3 \
+\cf2   # fields added by Filebeat itself, the custom fields overwrite the default\
+  # fields.\cf3 \
+\cf2   #fields_under_root: false\cf3 \
+\
+\cf2   # Set to true to publish fields with null values in events.\cf3 \
+\cf2   #keep_null: false\cf3 \
+\
+\cf2   # Ignore files which were modified more then the defined timespan in the past.\cf3 \
+\cf2   # ignore_older is disabled by default, so no files are ignored by setting it to 0.\cf3 \
+\cf2   # Time strings like 2h (2 hours), 5m (5 minutes) can be used.\cf3 \
+\cf2   #ignore_older: 0\cf3 \
+\
+\cf2   # How often the input checks for new files in the paths that are specified\cf3 \
+\cf2   # for harvesting. Specify 1s to scan the directory as frequently as possible\cf3 \
+\cf2   # without causing Filebeat to scan too frequently. Default: 10s.\cf3 \
+\cf2   #scan_frequency: 10s\cf3 \
+\
+\cf2   # Defines the buffer size every harvester uses when fetching the file\cf3 \
+\cf2   #harvester_buffer_size: 16384\cf3 \
+\
+\cf2   # Maximum number of bytes a single log event can have\cf3 \
+\cf2   # All bytes after max_bytes are discarded and not sent. The default is 10MB.\cf3 \
+\cf2   # This is especially useful for multiline log messages which can get large.\cf3 \
+\cf2   #max_bytes: 10485760\cf3 \
+\
+\cf2   # Characters which separate the lines. Valid values: auto, line_feed, vertical_tab, form_feed,\cf3 \
+\cf2   # carriage_return, carriage_return_line_feed, next_line, line_separator, paragraph_separator.\cf3 \
+\cf2   #line_terminator: auto\cf3 \
+\
+\cf2   ### Recursive glob configuration\cf3 \
+\
+\cf2   # Expand "**" patterns into regular glob patterns.\cf3 \
+\cf2   #recursive_glob.enabled: true\cf3 \
+\
+\cf2   ### JSON configuration\cf3 \
+\
+\cf2   # Decode JSON options. Enable this if your logs are structured in JSON.\cf3 \
+\cf2   # JSON key on which to apply the line filtering and multiline settings. This key\cf3 \
+\cf2   # must be top level and its value must be string, otherwise it is ignored. If\cf3 \
+\cf2   # no text key is defined, the line filtering and multiline features cannot be used.\cf3 \
+\cf2   #json.message_key:\cf3 \
+\
+\cf2   # By default, the decoded JSON is placed under a "json" key in the output document.\cf3 \
+\cf2   # If you enable this setting, the keys are copied top level in the output document.\cf3 \
+\cf2   #json.keys_under_root: false\cf3 \
+\
+\cf2   # If keys_under_root and this setting are enabled, then the values from the decoded\cf3 \
+\cf2   # JSON object overwrite the fields that Filebeat normally adds (type, source, offset, etc.)\cf3 \
+\cf2   # in case of conflicts.\cf3 \
+\cf2   #json.overwrite_keys: false\cf3 \
+\
+\cf2   # If this setting is enabled, Filebeat adds a "error.message" and "error.key: json" key in case of JSON\cf3 \
+\cf2   # unmarshaling errors or when a text key is defined in the configuration but cannot\cf3 \
+\cf2   # be used.\cf3 \
+\cf2   #json.add_error_key: false\cf3 \
+\
+\cf2   ### Multiline options\cf3 \
+\
+\cf2   # Multiline can be used for log messages spanning multiple lines. This is common\cf3 \
+\cf2   # for Java Stack Traces or C-Line Continuation\cf3 \
+\
+\cf2   # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [\cf3 \
+\cf2   #multiline.pattern: ^\\[\cf3 \
+\
+\cf2   # Defines if the pattern set under pattern should be negated or not. Default is false.\cf3 \
+\cf2   #multiline.negate: false\cf3 \
+\
+\cf2   # Match can be set to "after" or "before". It is used to define if lines should be append to a pattern\cf3 \
+\cf2   # that was (not) matched before or after or as long as a pattern is not matched based on negate.\cf3 \
+\cf2   # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash\cf3 \
+\cf2   #multiline.match: after\cf3 \
+\
+\cf2   # The maximum number of lines that are combined to one event.\cf3 \
+\cf2   # In case there are more the max_lines the additional lines are discarded.\cf3 \
+\cf2   # Default is 500\cf3 \
+\cf2   #multiline.max_lines: 500\cf3 \
+\
+\cf2   # After the defined timeout, an multiline event is sent even if no new pattern was found to start a new event\cf3 \
+\cf2   # Default is 5s.\cf3 \
+\cf2   #multiline.timeout: 5s\cf3 \
+\
+\cf2   # Setting tail_files to true means filebeat starts reading new files at the end\cf3 \
+\cf2   # instead of the beginning. If this is used in combination with log rotation\cf3 \
+\cf2   # this can mean that the first entries of a new file are skipped.\cf3 \
+\cf2   #tail_files: false\cf3 \
+\
+\cf2   # The Ingest Node pipeline ID associated with this input. If this is set, it\cf3 \
+\cf2   # overwrites the pipeline option from the Elasticsearch output.\cf3 \
+\cf2   #pipeline:\cf3 \
+\
+\cf2   # If symlinks is enabled, symlinks are opened and harvested. The harvester is opening the\cf3 \
+\cf2   # original for harvesting but will report the symlink name as source.\cf3 \
+\cf2   #symlinks: false\cf3 \
+\
+\cf2   # Backoff values define how aggressively filebeat crawls new files for updates\cf3 \
+\cf2   # The default values can be used in most cases. Backoff defines how long it is waited\cf3 \
+\cf2   # to check a file again after EOF is reached. Default is 1s which means the file\cf3 \
+\cf2   # is checked every second if new lines were added. This leads to a near real time crawling.\cf3 \
+\cf2   # Every time a new line appears, backoff is reset to the initial value.\cf3 \
+\cf2   #backoff: 1s\cf3 \
+\
+\cf2   # Max backoff defines what the maximum backoff time is. After having backed off multiple times\cf3 \
+\cf2   # from checking the files, the waiting time will never exceed max_backoff independent of the\cf3 \
+\cf2   # backoff factor. Having it set to 10s means in the worst case a new line can be added to a log\cf3 \
+\cf2   # file after having backed off multiple times, it takes a maximum of 10s to read the new line\cf3 \
+\cf2   #max_backoff: 10s\cf3 \
+\
+\cf2   # The backoff factor defines how fast the algorithm backs off. The bigger the backoff factor,\cf3 \
+\cf2   # the faster the max_backoff value is reached. If this value is set to 1, no backoff will happen.\cf3 \
+\cf2   # The backoff value will be multiplied each time with the backoff_factor until max_backoff is reached\cf3 \
+\cf2   #backoff_factor: 2\cf3 \
+\
+\cf2   # Max number of harvesters that are started in parallel.\cf3 \
+\cf2   # Default is 0 which means unlimited\cf3 \
+\cf2   #harvester_limit: 0\cf3 \
+\
+\cf2   ### Harvester closing options\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2   # Close inactive closes the file handler after the predefined period.\cf3 \
+\cf2   # The period starts when the last line of the file was, not the file ModTime.\cf3 \
+\cf2   # Time strings like 2h (2 hours), 5m (5 minutes) can be used.\cf3 \
+\cf2   #close_inactive: 5m\cf3 \
+\
+\cf2   # Close renamed closes a file handler when the file is renamed or rotated.\cf3 \
+\cf2   # Note: Potential data loss. Make sure to read and understand the docs for this option.\cf3 \
+\cf2   #close_renamed: false\cf3 \
+\
+\cf2   # When enabling this option, a file handler is closed immediately in case a file can't be found\cf3 \
+\cf2   # any more. In case the file shows up again later, harvesting will continue at the last known position\cf3 \
+\cf2   # after scan_frequency.\cf3 \
+\cf2   #close_removed: true\cf3 \
+\
+\cf2   # Closes the file handler as soon as the harvesters reaches the end of the file.\cf3 \
+\cf2   # By default this option is disabled.\cf3 \
+\cf2   # Note: Potential data loss. Make sure to read and understand the docs for this option.\cf3 \
+\cf2   #close_eof: false\cf3 \
+\
+\cf2   ### State options\cf3 \
+\
+\cf2   # Files for the modification data is older then clean_inactive the state from the registry is removed\cf3 \
+\cf2   # By default this is disabled.\cf3 \
+\cf2   #clean_inactive: 0\cf3 \
+\
+\cf2   # Removes the state for file which cannot be found on disk anymore immediately\cf3 \
+\cf2   #clean_removed: true\cf3 \
+\
+\cf2   # Close timeout closes the harvester after the predefined time.\cf3 \
+\cf2   # This is independent if the harvester did finish reading the file or not.\cf3 \
+\cf2   # By default this option is disabled.\cf3 \
+\cf2   # Note: Potential data loss. Make sure to read and understand the docs for this option.\cf3 \
+\cf2   #close_timeout: 0\cf3 \
+\
+\cf2   # Defines if inputs is enabled\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2 #----------------------------- Stdin input -------------------------------\cf3 \
+\cf2 # Configuration to use stdin input\cf3 \
+\cf2 #- type: stdin\cf3 \
+\
+\cf2 #------------------------- Redis slowlog input ---------------------------\cf3 \
+\cf2 # Experimental: Config options for the redis slow log input\cf3 \
+\cf2 #- type: redis\cf3 \
+\cf2   #enabled: false\cf3 \
+\
+\cf2   # List of hosts to pool to retrieve the slow log information.\cf3 \
+\cf2   #hosts: ["localhost:6379"]\cf3 \
+\
+\cf2   # How often the input checks for redis slow log.\cf3 \
+\cf2   #scan_frequency: 10s\cf3 \
+\
+\cf2   # Timeout after which time the input should return an error\cf3 \
+\cf2   #timeout: 1s\cf3 \
+\
+\cf2   # Network type to be used for redis connection. Default: tcp\cf3 \
+\cf2   #network: tcp\cf3 \
+\
+\cf2   # Max number of concurrent connections. Default: 10\cf3 \
+\cf2   #maxconn: 10\cf3 \
+\
+\cf2   # Redis AUTH password. Empty by default.\cf3 \
+\cf2   #password: foobared\cf3 \
+\
+\cf2 #------------------------------ Udp input --------------------------------\cf3 \
+\cf2 # Experimental: Config options for the udp input\cf3 \
+\cf2 #- type: udp\cf3 \
+\cf2   #enabled: false\cf3 \
+\
+\cf2   # Maximum size of the message received over UDP\cf3 \
+\cf2   #max_message_size: 10KiB\cf3 \
+\
+\cf2   # Size of the UDP read buffer in bytes\cf3 \
+\cf2   #read_buffer: 0\cf3 \
+\
+\
+\cf2 #------------------------------ TCP input --------------------------------\cf3 \
+\cf2 # Experimental: Config options for the TCP input\cf3 \
+\cf2 #- type: tcp\cf3 \
+\cf2   #enabled: false\cf3 \
+\
+\cf2   # The host and port to receive the new event\cf3 \
+\cf2   #host: "localhost:9000"\cf3 \
+\
+\cf2   # Character used to split new message\cf3 \
+\cf2   #line_delimiter: "\\n"\cf3 \
+\
+\cf2   # Maximum size in bytes of the message received over TCP\cf3 \
+\cf2   #max_message_size: 20MiB\cf3 \
+\
+\cf2   # Max number of concurrent connections, or 0 for no limit. Default: 0\cf3 \
+\cf2   #max_connections: 0\cf3 \
+\
+\cf2   # The number of seconds of inactivity before a remote connection is closed.\cf3 \
+\cf2   #timeout: 300s\cf3 \
+\
+\cf2   # Use SSL settings for TCP.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # SSL configuration. By default is off.\cf3 \
+\cf2   # List of root certificates for client verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL server authentication.\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Server Certificate Key,\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the Certificate Key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections.\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE based cipher suites.\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of client authentication are supported. Valid options\cf3 \
+\cf2   # are `none`, `optional`, and `required`. When `certificate_authorities` is set it will\cf3 \
+\cf2   # default to `required` otherwise it will be set to `none`.\cf3 \
+\cf2   #ssl.client_authentication: "required"\cf3 \
+\
+\cf2 #------------------------------ Syslog input --------------------------------\cf3 \
+\cf2 # Experimental: Config options for the Syslog input\cf3 \
+\cf2 # Accept RFC3164 formatted syslog event via UDP.\cf3 \
+\cf2 #- type: syslog\cf3 \
+\cf2   #enabled: false\cf3 \
+\cf2   #protocol.udp:\cf3 \
+\cf2     # The host and port to receive the new event\cf3 \
+\cf2     #host: "localhost:9000"\cf3 \
+\
+\cf2     # Maximum size of the message received over UDP\cf3 \
+\cf2     #max_message_size: 10KiB\cf3 \
+\
+\cf2 # Accept RFC3164 formatted syslog event via TCP.\cf3 \
+\cf2 #- type: syslog\cf3 \
+\cf2   #enabled: false\cf3 \
+\
+\cf2   #protocol.tcp:\cf3 \
+\cf2     # The host and port to receive the new event\cf3 \
+\cf2     #host: "localhost:9000"\cf3 \
+\
+\cf2     # Character used to split new message\cf3 \
+\cf2     #line_delimiter: "\\n"\cf3 \
+\
+\cf2     # Maximum size in bytes of the message received over TCP\cf3 \
+\cf2     #max_message_size: 20MiB\cf3 \
+\
+\cf2     # The number of seconds of inactivity before a remote connection is closed.\cf3 \
+\cf2     #timeout: 300s\cf3 \
+\
+\cf2     # Use SSL settings for TCP.\cf3 \
+\cf2     #ssl.enabled: true\cf3 \
+\
+\cf2     # List of supported/valid TLS versions. By default all TLS versions 1.0 up to\cf3 \
+\cf2     # 1.2 are enabled.\cf3 \
+\cf2     #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2     # SSL configuration. By default is off.\cf3 \
+\cf2     # List of root certificates for client verifications\cf3 \
+\cf2     #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2     # Certificate for SSL server authentication.\cf3 \
+\cf2     #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2     # Server Certificate Key,\cf3 \
+\cf2     #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2     # Optional passphrase for decrypting the Certificate Key.\cf3 \
+\cf2     #ssl.key_passphrase: ''\cf3 \
+\
+\cf2     # Configure cipher suites to be used for SSL connections.\cf3 \
+\cf2     #ssl.cipher_suites: []\cf3 \
+\
+\cf2     # Configure curve types for ECDHE based cipher suites.\cf3 \
+\cf2     #ssl.curve_types: []\cf3 \
+\
+\cf2     # Configure what types of client authentication are supported. Valid options\cf3 \
+\cf2     # are `none`, `optional`, and `required`. When `certificate_authorities` is set it will\cf3 \
+\cf2     # default to `required` otherwise it will be set to `none`.\cf3 \
+\cf2     #ssl.client_authentication: "required"\cf3 \
+\
+\cf2 #------------------------------ Container input --------------------------------\cf3 \
+\cf2 #- type: container\cf3 \
+\cf2   #enabled: false\cf3 \
+\
+\cf2   # Paths for container logs that should be crawled and fetched.\cf3 \
+\cf2   #paths:\cf3 \
+\cf2   #  -/var/lib/docker/containers/*/*.log\cf3 \
+\
+\cf2   # Configure stream to filter to a specific stream: stdout, stderr or all (default)\cf3 \
+\cf2   #stream: all\cf3 \
+\
+\cf2 #========================== Filebeat autodiscover ==============================\cf3 \
+\
+\cf2 # Autodiscover allows you to detect changes in the system and spawn new modules\cf3 \
+\cf2 # or inputs as they happen.\cf3 \
+\
+\cf2 #filebeat.autodiscover:\cf3 \
+\cf2   # List of enabled autodiscover providers\cf3 \
+\cf2 #  providers:\cf3 \
+\cf2 #    - type: docker\cf3 \
+\cf2 #      templates:\cf3 \
+\cf2 #        - condition:\cf3 \
+\cf2 #            equals.docker.container.image: busybox\cf3 \
+\cf2 #          config:\cf3 \
+\cf2 #            - type: container\cf3 \
+\cf2 #\cf3               \cf2 paths:\cf3 \
+\cf2 #\cf3                 \cf2 - /var/lib/docker/containers/$\{data.docker.container.id\}/*.log\cf3 \
+\
+\cf2 #========================= Filebeat global options ============================\cf3 \
+\
+\cf2 # Registry data path. If a relative path is used, it is considered relative to the\cf3 \
+\cf2 # data path.\cf3 \
+\cf2 #filebeat.registry.path: $\{path.data\}/registry\cf3 \
+\
+\cf2 # The permissions mask to apply on registry data, and meta files. The default\cf3 \
+\cf2 # value is 0600.  Must be a valid Unix-style file permissions mask expressed in\cf3 \
+\cf2 # octal notation.  This option is not supported on Windows.\cf3 \
+\cf2 #filebeat.registry.file_permissions: 0600\cf3 \
+\
+\cf2 # The timeout value that controls when registry entries are written to disk\cf3 \
+\cf2 # (flushed). When an unwritten update exceeds this value, it triggers a write\cf3 \
+\cf2 # to disk. When flush is set to 0s, the registry is written to disk after each\cf3 \
+\cf2 # batch of events has been published successfully. The default value is 0s.\cf3 \
+\cf2 #filebeat.registry.flush: 0s\cf3 \
+\
+\
+\cf2 # Starting with Filebeat 7.0, the registry uses a new directory format to store\cf3 \
+\cf2 # Filebeat state. After you upgrade, Filebeat will automatically migrate a 6.x\cf3 \
+\cf2 # registry file to use the new directory format. If you changed\cf3 \
+\cf2 # filebeat.registry.path while upgrading, set filebeat.registry.migrate_file to\cf3 \
+\cf2 # point to the old registry file.\cf3 \
+\cf2 #filebeat.registry.migrate_file: $\{path.data\}/registry\cf3 \
+\
+\cf2 # By default Ingest pipelines are not updated if a pipeline with the same ID\cf3 \
+\cf2 # already exists. If this option is enabled Filebeat overwrites pipelines\cf3 \
+\cf2 # everytime a new Elasticsearch connection is established.\cf3 \
+\cf2 #filebeat.overwrite_pipelines: false\cf3 \
+\
+\cf2 # How long filebeat waits on shutdown for the publisher to finish.\cf3 \
+\cf2 # Default is 0, not waiting.\cf3 \
+\cf2 #filebeat.shutdown_timeout: 0\cf3 \
+\
+\cf2 # Enable filebeat config reloading\cf3 \
+\cf2 #filebeat.config:\cf3 \
+\cf2   #inputs:\cf3 \
+\cf2     #enabled: false\cf3 \
+\cf2     #path: inputs.d/*.yml\cf3 \
+\cf2     #reload.enabled: true\cf3 \
+\cf2     #reload.period: 10s\cf3 \
+\cf2   #modules:\cf3 \
+\cf2     #enabled: false\cf3 \
+\cf2     #path: modules.d/*.yml\cf3 \
+\cf2     #reload.enabled: true\cf3 \
+\cf2     #reload.period: 10s\cf3 \
+\
+\cf2 #================================ General ======================================\cf3 \
+\
+\cf2 # The name of the shipper that publishes the network data. It can be used to group\cf3 \
+\cf2 # all the transactions sent by a single shipper in the web interface.\cf3 \
+\cf2 # If this options is not defined, the hostname is used.\cf3 \
+\cf2 #name:\cf3 \
+\
+\cf2 # The tags of the shipper are included in their own field with each\cf3 \
+\cf2 # transaction published. Tags make it easy to group servers by different\cf3 \
+\cf2 # logical properties.\cf3 \
+\cf2 #tags: ["service-X", "web-tier"]\cf3 \
+\
+\cf2 # Optional fields that you can specify to add additional information to the\cf3 \
+\cf2 # output. Fields can be scalar values, arrays, dictionaries, or any nested\cf3 \
+\cf2 # combination of these.\cf3 \
+\cf2 #fields:\cf3 \
+\cf2 #  env: staging\cf3 \
+\
+\cf2 # If this option is set to true, the custom fields are stored as top-level\cf3 \
+\cf2 # fields in the output document instead of being grouped under a fields\cf3 \
+\cf2 # sub-dictionary. Default is false.\cf3 \
+\cf2 #fields_under_root: false\cf3 \
+\
+\cf2 # Internal queue configuration for buffering events to be published.\cf3 \
+\cf2 #queue:\cf3 \
+\cf2   # Queue type by name (default 'mem')\cf3 \
+\cf2   # The memory queue will present all available events (up to the outputs\cf3 \
+\cf2   # bulk_max_size) to the output, the moment the output is ready to server\cf3 \
+\cf2   # another batch of events.\cf3 \
+\cf2   #mem:\cf3 \
+\cf2     # Max number of events the queue can buffer.\cf3 \
+\cf2     #events: 4096\cf3 \
+\
+\cf2     # Hints the minimum number of events stored in the queue,\cf3 \
+\cf2     # before providing a batch of events to the outputs.\cf3 \
+\cf2     # The default value is set to 2048.\cf3 \
+\cf2     # A value of 0 ensures events are immediately available\cf3 \
+\cf2     # to be sent to the outputs.\cf3 \
+\cf2     #flush.min_events: 2048\cf3 \
+\
+\cf2     # Maximum duration after which events are available to the outputs,\cf3 \
+\cf2     # if the number of events stored in the queue is < `flush.min_events`.\cf3 \
+\cf2     #flush.timeout: 1s\cf3 \
+\
+\cf2   # The spool queue will store events in a local spool file, before\cf3 \
+\cf2   # forwarding the events to the outputs.\cf3 \
+\cf2   #\cf3 \
+\cf2   # Beta: spooling to disk is currently a beta feature. Use with care.\cf3 \
+\cf2   #\cf3 \
+\cf2   # The spool file is a circular buffer, which blocks once the file/buffer is full.\cf3 \
+\cf2   # Events are put into a write buffer and flushed once the write buffer\cf3 \
+\cf2   # is full or the flush_timeout is triggered.\cf3 \
+\cf2   # Once ACKed by the output, events are removed immediately from the queue,\cf3 \
+\cf2   # making space for new events to be persisted.\cf3 \
+\cf2   #spool:\cf3 \
+\cf2     # The file namespace configures the file path and the file creation settings.\cf3 \
+\cf2     # Once the file exists, the `size`, `page_size` and `prealloc` settings\cf3 \
+\cf2     # will have no more effect.\cf3 \
+\cf2     #file:\cf3 \
+\cf2       # Location of spool file. The default value is $\{path.data\}/spool.dat.\cf3 \
+\cf2       #path: "$\{path.data\}/spool.dat"\cf3 \
+\
+\cf2       # Configure file permissions if file is created. The default value is 0600.\cf3 \
+\cf2       #permissions: 0600\cf3 \
+\
+\cf2       # File size hint. The spool blocks, once this limit is reached. The default value is 100 MiB.\cf3 \
+\cf2       #size: 100MiB\cf3 \
+\
+\cf2       # The files page size. A file is split into multiple pages of the same size. The default value is 4KiB.\cf3 \
+\cf2       #page_size: 4KiB\cf3 \
+\
+\cf2       # If prealloc is set, the required space for the file is reserved using\cf3 \
+\cf2       # truncate. The default value is true.\cf3 \
+\cf2       #prealloc: true\cf3 \
+\
+\cf2     # Spool writer settings\cf3 \
+\cf2     # Events are serialized into a write buffer. The write buffer is flushed if:\cf3 \
+\cf2     # - The buffer limit has been reached.\cf3 \
+\cf2     # - The configured limit of buffered events is reached.\cf3 \
+\cf2     # - The flush timeout is triggered.\cf3 \
+\cf2     #write:\cf3 \
+\cf2       # Sets the write buffer size.\
+      #buffer_size: 1MiB\cf3 \
+\
+\cf2       # Maximum duration after which events are flushed if the write buffer\cf3 \
+\cf2       # is not full yet. The default value is 1s.\cf3 \
+\cf2       #flush.timeout: 1s\cf3 \
+\
+\cf2       # Number of maximum buffered events. The write buffer is flushed once the\cf3 \
+\cf2       # limit is reached.\cf3 \
+\cf2       #flush.events: 16384\cf3 \
+\
+\cf2       # Configure the on-disk event encoding. The encoding can be changed\cf3 \
+\cf2       # between restarts.\cf3 \
+\cf2       # Valid encodings are: json, ubjson, and cbor.\cf3 \
+\cf2       #codec: cbor\cf3 \
+\cf2     #read:\cf3 \
+\cf2       # Reader flush timeout, waiting for more events to become available, so\cf3 \
+\cf2       # to fill a complete batch as required by the outputs.\cf3 \
+\cf2       # If flush_timeout is 0, all available events are forwarded to the\cf3 \
+\cf2       # outputs immediately.\cf3 \
+\cf2       # The default value is 0s.\cf3 \
+\cf2       #flush.timeout: 0s\cf3 \
+\
+\cf2 # Sets the maximum number of CPUs that can be executing simultaneously. The\cf3 \
+\cf2 # default is the number of logical CPUs available in the system.\cf3 \
+\cf2 #max_procs:\cf3 \
+\
+\cf2 #================================ Processors ===================================\cf3 \
+\
+\cf2 # Processors are used to reduce the number of fields in the exported event or to\cf3 \
+\cf2 # enhance the event with external metadata. This section defines a list of\cf3 \
+\cf2 # processors that are applied one by one and the first one receives the initial\cf3 \
+\cf2 # event:\cf3 \
+\cf2 #\cf3 \
+\cf2 #   event -> filter1 -> event1 -> filter2 ->event2 ...\cf3 \
+\cf2 #\cf3 \
+\cf2 # The supported processors are drop_fields, drop_event, include_fields,\cf3 \
+\cf2 # decode_json_fields, and add_cloud_metadata.\cf3 \
+\cf2 #\cf3 \
+\cf2 # For example, you can use the following processors to keep the fields that\cf3 \
+\cf2 # contain CPU load percentages, but remove the fields that contain CPU ticks\cf3 \
+\cf2 # values:\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- include_fields:\cf3 \
+\cf2 #    fields: ["cpu"]\cf3 \
+\cf2 #- drop_fields:\cf3 \
+\cf2 #    fields: ["cpu.user", "cpu.system"]\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example drops the events that have the HTTP response code 200:\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- drop_event:\cf3 \
+\cf2 #    when:\cf3 \
+\cf2 #       equals:\cf3 \
+\cf2 #           http.code: 200\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example renames the field a to b:\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- rename:\cf3 \
+\cf2 #    fields:\cf3 \
+\cf2 #       - from: "a"\cf3 \
+\cf2 #         to: "b"\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example tokenizes the string into fields:\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- dissect:\cf3 \
+\cf2 #    tokenizer: "%\{key1\} - %\{key2\}"\cf3 \
+\cf2 #    field: "message"\cf3 \
+\cf2 #    target_prefix: "dissect"\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with metadata from the cloud\cf3 \
+\cf2 # provider about the host machine. It works on EC2, GCE, DigitalOcean,\cf3 \
+\cf2 # Tencent Cloud, and Alibaba Cloud.\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_cloud_metadata: ~\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with the machine's local time zone\cf3 \
+\cf2 # offset from UTC.\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_locale:\cf3 \
+\cf2 #    format: offset\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with docker metadata, it matches\cf3 \
+\cf2 # given fields to an existing container id and adds info from that container:\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_docker_metadata:\cf3 \
+\cf2 #    host: "unix:///var/run/docker.sock"\cf3 \
+\cf2 #    match_fields: ["system.process.cgroup.id"]\cf3 \
+\cf2 #    match_pids: ["process.pid", "process.ppid"]\cf3 \
+\cf2 #    match_source: true\cf3 \
+\cf2 #    match_source_index: 4\cf3 \
+\cf2 #    match_short_id: false\cf3 \
+\cf2 #    cleanup_timeout: 60\cf3 \
+\cf2 #    labels.dedot: false\cf3 \
+\cf2 #    # To connect to Docker over TLS you must specify a client and CA certificate.\cf3 \
+\cf2 #    #ssl:\cf3 \
+\cf2 #    #  certificate_authority: "/etc/pki/root/ca.pem"\cf3 \
+\cf2 #    #  certificate:           "/etc/pki/client/cert.pem"\cf3 \
+\cf2 #    #  key:\cf3                    \cf2 "/etc/pki/client/cert.key"\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with docker metadata, it matches\cf3 \
+\cf2 # container id from log path available in `source` field (by default it expects\cf3 \
+\cf2 # it to be /var/lib/docker/containers/*/*.log).\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_docker_metadata: ~\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with host metadata.\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_host_metadata:\cf3 \
+\cf2 #   netinfo.enabled: false\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example enriches each event with process metadata using\cf3 \
+\cf2 # process IDs included in the event.\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- add_process_metadata:\cf3 \
+\cf2 #    match_pids: ["system.process.ppid"]\cf3 \
+\cf2 #    target: system.process.parent\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example decodes fields containing JSON strings\cf3 \
+\cf2 # and replaces the strings with valid JSON objects.\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- decode_json_fields:\cf3 \
+\cf2 #    fields: ["field1", "field2", ...]\cf3 \
+\cf2 #    process_array: false\cf3 \
+\cf2 #    max_depth: 1\cf3 \
+\cf2 #    target: ""\cf3 \
+\cf2 #    overwrite_keys: false\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- decompress_gzip_field:\cf3 \
+\cf2 #    from: "field1"\cf3 \
+\cf2 #    to: "field2"\cf3 \
+\cf2 #    ignore_missing: false\cf3 \
+\cf2 #    fail_on_error: true\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example copies the value of message to message_copied\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- copy_fields:\cf3 \
+\cf2 #    fields:\cf3 \
+\cf2 #        - from: message\cf3 \
+\cf2 #          to: message_copied\cf3 \
+\cf2 #    fail_on_error: true\cf3 \
+\cf2 #    ignore_missing: false\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example truncates the value of message to 1024 bytes\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- truncate_fields:\cf3 \
+\cf2 #    fields:\cf3 \
+\cf2 #      - message\cf3 \
+\cf2 #    max_bytes: 1024\cf3 \
+\cf2 #    fail_on_error: false\cf3 \
+\cf2 #    ignore_missing: true\cf3 \
+\cf2 #\cf3 \
+\cf2 # The following example preserves the raw message under event.original\cf3 \
+\cf2 #\cf3 \
+\cf2 #processors:\cf3 \
+\cf2 #- copy_fields:\cf3 \
+\cf2 #    fields:\cf3 \
+\cf2 #        - from: message\cf3 \
+\cf2 #          to: event.original\cf3 \
+\cf2 #    fail_on_error: false\cf3 \
+\cf2 #    ignore_missing: true\cf3 \
+\cf2 #- truncate_fields:\cf3 \
+\cf2 #    fields:\cf3 \
+\cf2 #      - event.original\cf3 \
+\cf2 #    max_bytes: 1024\cf3 \
+\cf2 #    fail_on_error: false\cf3 \
+\cf2 #    ignore_missing: true\cf3 \
+\
+\cf2 #============================= Elastic Cloud ==================================\cf3 \
+\
+\cf2 # These settings simplify using Filebeat with the Elastic Cloud (https://cloud.elastic.co/).\cf3 \
+\
+\cf2 # The cloud.id setting overwrites the `output.elasticsearch.hosts` and\cf3 \
+\cf2 # `setup.kibana.host` options.\cf3 \
+\cf2 # You can find the `cloud.id` in the Elastic Cloud web UI.\cf3 \
+\cf2 #cloud.id:\cf3 \
+\
+\cf2 # The cloud.auth setting overwrites the `output.elasticsearch.username` and\cf3 \
+\cf2 # `output.elasticsearch.password` settings. The format is `<user>:<pass>`.\cf3 \
+\cf2 #cloud.auth:\cf3 \
+\
+\cf2 #================================ Outputs ======================================\cf3 \
+\
+\cf2 # Configure what output to use when sending the data collected by the beat.\cf3 \
+\
+\cf2 #-------------------------- Elasticsearch output -------------------------------\cf3 \
+output.elasticsearch:\
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # Array of hosts to connect to.\cf3 \
+\cf2   # Scheme and port can be left out and will be set to the default (http and 9200)\cf3 \
+\cf2   # In case you specify and additional path, the scheme is required: http://localhost:9200/path\cf3 \
+\cf2   # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200\cf3 \
+  hosts: ["10.1.0.4:9200"]\
+  username: "elastic"\
+  password: "changeme" # TODO: Change this to the password you set\
+\
+\cf2   # Set gzip compression level.\cf3 \
+\cf2   #compression_level: 0\cf3 \
+\
+\cf2   # Configure escaping HTML symbols in strings.\cf3 \
+\cf2   #escape_html: false\cf3 \
+\
+\cf2   # Optional protocol and basic auth credentials.\cf3 \
+\cf2   #protocol: "https"\cf3 \
+\cf2   #username: "elastic"\cf3 \
+\cf2   #password: "changeme"\cf3 \
+\
+\cf2   # Dictionary of HTTP parameters to pass within the URL with index operations.\cf3 \
+\cf2   #parameters:\cf3 \
+\cf2     #param1: value1\cf3 \
+\cf2     #param2: value2\cf3 \
+\
+\cf2   # Number of workers per Elasticsearch host.\cf3 \
+\cf2   #worker: 1\cf3 \
+\
+\cf2   # Optional index name. The default is "filebeat" plus date\cf3 \
+\cf2   # and generates [filebeat-]YYYY.MM.DD keys.\cf3 \
+\cf2   # In case you modify this pattern you must update setup.template.name and setup.template.pattern accordingly.\cf3 \
+\cf2   #index: "filebeat-%\{[agent.version]\}-%\{+yyyy.MM.dd\}"\cf3 \
+\
+\cf2   # Optional ingest node pipeline. By default no pipeline will be used.\cf3 \
+\cf2   #pipeline: ""\cf3 \
+\
+\cf2   # Optional HTTP path\cf3 \
+\cf2   #path: "/elasticsearch"\cf3 \
+\
+\cf2   # Custom HTTP headers to add to each request\cf3 \
+\cf2   #headers:\cf3 \
+\cf2   #  X-My-Header: Contents of the header\cf3 \
+\
+\cf2   # Proxy server URL\cf3 \
+\cf2   #proxy_url: http://proxy:3128\cf3 \
+\
+\cf2   # Whether to disable proxy settings for outgoing connections. If true, this\cf3 \
+\cf2   # takes precedence over both the proxy_url field and any environment settings\cf3 \
+\cf2   # (HTTP_PROXY, HTTPS_PROXY). The default is false.\cf3 \
+\cf2   #proxy_disable: false\cf3 \
+\
+\cf2   # The number of times a particular Elasticsearch index operation is attempted. If\cf3 \
+\cf2   # the indexing operation doesn't succeed after this many retries, the events are\cf3 \
+\cf2   # dropped. The default is 3.\cf3 \
+\cf2   #max_retries: 3\cf3 \
+\
+\cf2   # The maximum number of events to bulk in a single Elasticsearch bulk API index request.\cf3 \
+\cf2   # The default is 50.\cf3 \
+\cf2   #bulk_max_size: 50\cf3 \
+\
+\cf2   # The number of seconds to wait before trying to reconnect to Elasticsearch\cf3 \
+\cf2   # after a network error. After waiting backoff.init seconds, the Beat\cf3 \
+\cf2   # tries to reconnect. If the attempt fails, the backoff timer is increased\cf3 \
+\cf2   # exponentially up to backoff.max. After a successful connection, the backoff\cf3 \
+\cf2   # timer is reset. The default is 1s.\cf3 \
+\cf2   #backoff.init: 1s\cf3 \
+\
+\cf2   # The maximum number of seconds to wait before attempting to connect to\cf3 \
+\cf2   # Elasticsearch after a network error. The default is 60s.\cf3 \
+\cf2   #backoff.max: 60s\cf3 \
+\
+\cf2   # Configure HTTP request timeout before failing a request to Elasticsearch.\cf3 \
+\cf2   #timeout: 90\cf3 \
+\
+\cf2   # Use SSL settings for HTTPS.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL-based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions from 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client certificate key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the certificate key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE-based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of renegotiation are supported. Valid options are\cf3 \
+\cf2   # never, once, and freely. Default is never.\cf3 \
+\cf2   #ssl.renegotiation: never\cf3 \
+\
+\cf2 #----------------------------- Logstash output ---------------------------------\cf3 \
+\cf2 #output.logstash:\cf3 \
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # The Logstash hosts\cf3 \
+\cf2   #hosts: ["localhost:5044"]\cf3 \
+\
+\cf2   # Number of workers per Logstash host.\cf3 \
+\cf2   #worker: 1\cf3 \
+\
+\cf2   # Set gzip compression level.\cf3 \
+\cf2   #compression_level: 3\cf3 \
+\
+\cf2   # Configure escaping HTML symbols in strings.\cf3 \
+\cf2   #escape_html: false\cf3 \
+\
+\cf2   # Optional maximum time to live for a connection to Logstash, after which the\cf3 \
+\cf2   # connection will be re-established.  A value of `0s` (the default) will\cf3 \
+\cf2   # disable this feature.\cf3 \
+\cf2   #\cf3 \
+\cf2   # Not yet supported for async connections (i.e. with the "pipelining" option set)\cf3 \
+\cf2   #ttl: 30s\cf3 \
+\
+\cf2   # Optionally load-balance events between Logstash hosts. Default is false.\cf3 \
+\cf2   #loadbalance: false\cf3 \
+\
+\cf2   # Number of batches to be sent asynchronously to Logstash while processing\cf3 \
+\cf2   # new batches.\cf3 \
+\cf2   #pipelining: 2\cf3 \
+\
+\cf2   # If enabled only a subset of events in a batch of events is transferred per\cf3 \
+\cf2   # transaction.  The number of events to be sent increases up to `bulk_max_size`\cf3 \
+\cf2   # if no error is encountered.\cf3 \
+\cf2   #slow_start: false\cf3 \
+\
+\cf2   # The number of seconds to wait before trying to reconnect to Logstash\cf3 \
+\cf2   # after a network error. After waiting backoff.init seconds, the Beat\cf3 \
+\cf2   # tries to reconnect. If the attempt fails, the backoff timer is increased\cf3 \
+\cf2   # exponentially up to backoff.max. After a successful connection, the backoff\cf3 \
+\cf2   # timer is reset. The default is 1s.\cf3 \
+\cf2   #backoff.init: 1s\cf3 \
+\
+\cf2   # The maximum number of seconds to wait before attempting to connect to\cf3 \
+\cf2   # Logstash after a network error. The default is 60s.\cf3 \
+\cf2   #backoff.max: 60s\cf3 \
+\
+\cf2   # Optional index name. The default index name is set to filebeat\cf3 \
+\cf2   # in all lowercase.\cf3 \
+\cf2   #index: 'filebeat'\cf3 \
+\
+\cf2   # SOCKS5 proxy server URL\cf3 \
+\cf2   #proxy_url: socks5://user:password@socks5-server:2233\cf3 \
+\
+\cf2   # Resolve names locally when using a proxy server. Defaults to false.\cf3 \
+\cf2   #proxy_use_local_resolver: false\cf3 \
+\
+\cf2   # Enable SSL support. SSL is automatically enabled if any SSL setting is set.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions from 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # Optional SSL configuration options. SSL is off by default.\cf3 \
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client certificate key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the Certificate Key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE-based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of renegotiation are supported. Valid options are\cf3 \
+\cf2   # never, once, and freely. Default is never.\cf3 \
+\cf2   #ssl.renegotiation: never\cf3 \
+\
+\cf2   # The number of times to retry publishing an event after a publishing failure.\cf3 \
+\cf2   # After the specified number of retries, the events are typically dropped.\cf3 \
+\cf2   # Some Beats, such as Filebeat and Winlogbeat, ignore the max_retries setting\cf3 \
+\cf2   # and retry until all events are published.  Set max_retries to a value less\cf3 \
+\cf2   # than 0 to retry until all events are published. The default is 3.\cf3 \
+\cf2   #max_retries: 3\cf3 \
+\
+\cf2   # The maximum number of events to bulk in a single Logstash request. The\cf3 \
+\cf2   # default is 2048.\cf3 \
+\cf2   #bulk_max_size: 2048\cf3 \
+\
+\cf2   # The number of seconds to wait for responses from the Logstash server before\cf3 \
+\cf2   # timing out. The default is 30s.\cf3 \
+\cf2   #timeout: 30s\cf3 \
+\
+\cf2 #------------------------------- Kafka output ----------------------------------\cf3 \
+\cf2 #output.kafka:\cf3 \
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # The list of Kafka broker addresses from which to fetch the cluster metadata.\cf3 \
+\cf2   # The cluster metadata contain the actual Kafka brokers events are published\cf3 \
+\cf2   # to.\cf3 \
+\cf2   #hosts: ["localhost:9092"]\cf3 \
+\
+\cf2   # The Kafka topic used for produced events. The setting can be a format string\cf3 \
+\cf2   # using any event field. To set the topic from document type use `%\{[type]\}`.\cf3 \
+\cf2   #topic: beats\cf3 \
+\
+\cf2   # The Kafka event key setting. Use format string to create a unique event key.\cf3 \
+\cf2   # By default no event key will be generated.\cf3 \
+\cf2   #key: ''\cf3 \
+\
+\cf2   # The Kafka event partitioning strategy. Default hashing strategy is `hash`\cf3 \
+\cf2   # using the `output.kafka.key` setting or randomly distributes events if\cf3 \
+\cf2   # `output.kafka.key` is not configured.\cf3 \
+\cf2   #partition.hash:\cf3 \
+\cf2     # If enabled, events will only be published to partitions with reachable\cf3 \
+\cf2     # leaders. Default is false.\cf3 \
+\cf2     #reachable_only: false\cf3 \
+\
+\cf2     # Configure alternative event field names used to compute the hash value.\cf3 \
+\cf2     # If empty `output.kafka.key` setting will be used.\cf3 \
+\cf2     # Default value is empty list.\cf3 \
+\cf2     #hash: []\cf3 \
+\
+\cf2   # Authentication details. Password is required if username is set.\cf3 \
+\cf2   #username: ''\cf3 \
+\cf2   #password: ''\cf3 \
+\
+\cf2   # Kafka version Filebeat is assumed to run against. Defaults to the "1.0.0".\cf3 \
+\cf2   #version: '1.0.0'\cf3 \
+\
+\cf2   # Configure JSON encoding\cf3 \
+\cf2   #codec.json:\cf3 \
+\cf2     # Pretty-print JSON event\cf3 \
+\cf2     #pretty: false\cf3 \
+\
+\cf2     # Configure escaping HTML symbols in strings.\cf3 \
+\cf2     #escape_html: false\cf3 \
+\
+\cf2   # Metadata update configuration. Metadata contains leader information\cf3 \
+\cf2   # used to decide which broker to use when publishing.\cf3 \
+\cf2   #metadata:\cf3 \
+\cf2     # Max metadata request retry attempts when cluster is in middle of leader\cf3 \
+\cf2     # election. Defaults to 3 retries.\cf3 \
+\cf2     #retry.max: 3\cf3 \
+\
+\cf2     # Wait time between retries during leader elections. Default is 250ms.\cf3 \
+\cf2     #retry.backoff: 250ms\cf3 \
+\
+\cf2     # Refresh metadata interval. Defaults to every 10 minutes.\cf3 \
+\cf2     #refresh_frequency: 10m\cf3 \
+\
+\cf2     # Strategy for fetching the topics metadata from the broker. Default is false.\cf3 \
+\cf2     #full: false\cf3 \
+\
+\cf2   # The number of concurrent load-balanced Kafka output workers.\cf3 \
+\cf2   #worker: 1\cf3 \
+\
+\cf2   # The number of times to retry publishing an event after a publishing failure.\cf3 \
+\cf2   # After the specified number of retries, events are typically dropped.\cf3 \
+\cf2   # Some Beats, such as Filebeat, ignore the max_retries setting and retry until\cf3 \
+\cf2   # all events are published.  Set max_retries to a value less than 0 to retry\cf3 \
+\cf2   # until all events are published. The default is 3.\cf3 \
+\cf2   #max_retries: 3\cf3 \
+\
+\cf2   # The maximum number of events to bulk in a single Kafka request. The default\cf3 \
+\cf2   # is 2048.\cf3 \
+\cf2   #bulk_max_size: 2048\cf3 \
+\
+\cf2   # Duration to wait before sending bulk Kafka request. 0 is no delay. The default\cf3 \
+\cf2   # is 0.\cf3 \
+\cf2   #bulk_flush_frequency: 0s\cf3 \
+\
+\cf2   # The number of seconds to wait for responses from the Kafka brokers before\cf3 \
+\cf2   # timing out. The default is 30s.\cf3 \
+\cf2   #timeout: 30s\cf3 \
+\
+\cf2   # The maximum duration a broker will wait for number of required ACKs. The\cf3 \
+\cf2   # default is 10s.\cf3 \
+\cf2   #broker_timeout: 10s\cf3 \
+\
+\cf2   # The number of messages buffered for each Kafka broker. The default is 256.\cf3 \
+\cf2   #channel_buffer_size: 256\cf3 \
+\
+\cf2   # The keep-alive period for an active network connection. If 0s, keep-alives\cf3 \
+\cf2   # are disabled. The default is 0 seconds.\cf3 \
+\cf2   #keep_alive: 0\cf3 \
+\
+\cf2   # Sets the output compression codec. Must be one of none, snappy and gzip. The\cf3 \
+\cf2   # default is gzip.\cf3 \
+\cf2   #compression: gzip\cf3 \
+\
+\cf2   # Set the compression level. Currently only gzip provides a compression level\cf3 \
+\cf2   # between 0 and 9. The default value is chosen by the compression algorithm.\cf3 \
+\cf2   #compression_level: 4\cf3 \
+\
+\cf2   # The maximum permitted size of JSON-encoded messages. Bigger messages will be\cf3 \
+\cf2   # dropped. The default value is 1000000 (bytes). This value should be equal to\cf3 \
+\cf2   # or less than the broker's message.max.bytes.\cf3 \
+\cf2   #max_message_bytes: 1000000\cf3 \
+\
+\cf2   # The ACK reliability level required from broker. 0=no response, 1=wait for\cf3 \
+\cf2   # local commit, -1=wait for all replicas to commit. The default is 1.  Note:\cf3 \
+\cf2   # If set to 0, no ACKs are returned by Kafka. Messages might be lost silently\cf3 \
+\cf2   # on error.\cf3 \
+\cf2   #required_acks: 1\cf3 \
+\
+\cf2   # The configurable ClientID used for logging, debugging, and auditing\cf3 \
+\cf2   # purposes.  The default is "beats".\cf3 \
+\cf2   #client_id: beats\cf3 \
+\
+\cf2   # Enable SSL support. SSL is automatically enabled if any SSL setting is set.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Optional SSL configuration options. SSL is off by default.\cf3 \
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions from 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client Certificate Key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the Certificate Key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE-based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of renegotiation are supported. Valid options are\cf3 \
+\cf2   # never, once, and freely. Default is never.\cf3 \
+\cf2   #ssl.renegotiation: never\cf3 \
+\
+\cf2 #------------------------------- Redis output ----------------------------------\cf3 \
+\cf2 #output.redis:\cf3 \
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # Configure JSON encoding\cf3 \
+\cf2   #codec.json:\cf3 \
+\cf2     # Pretty print json event\cf3 \
+\cf2     #pretty: false\cf3 \
+\
+\cf2     # Configure escaping HTML symbols in strings.\cf3 \
+\cf2     #escape_html: false\cf3 \
+\
+\cf2   # The list of Redis servers to connect to. If load-balancing is enabled, the\cf3 \
+\cf2   # events are distributed to the servers in the list. If one server becomes\cf3 \
+\cf2   # unreachable, the events are distributed to the reachable servers only.\cf3 \
+\cf2   #hosts: ["localhost:6379"]\cf3 \
+\
+\cf2   # The name of the Redis list or channel the events are published to. The\cf3 \
+\cf2   # default is filebeat.\cf3 \
+\cf2   #key: filebeat\cf3 \
+\
+\cf2   # The password to authenticate to Redis with. The default is no authentication.\cf3 \
+\cf2   #password:\cf3 \
+\
+\cf2   # The Redis database number where the events are published. The default is 0.\cf3 \
+\cf2   #db: 0\cf3 \
+\
+\cf2   # The Redis data type to use for publishing events. If the data type is list,\cf3 \
+\cf2   # the Redis RPUSH command is used. If the data type is channel, the Redis\cf3 \
+\cf2   # PUBLISH command is used. The default value is list.\cf3 \
+\cf2   #datatype: list\cf3 \
+\
+\cf2   # The number of workers to use for each host configured to publish events to\cf3 \
+\cf2   # Redis. Use this setting along with the loadbalance option. For example, if\cf3 \
+\cf2   # you have 2 hosts and 3 workers, in total 6 workers are started (3 for each\cf3 \
+\cf2   # host).\cf3 \
+\cf2   #worker: 1\cf3 \
+\
+\cf2   # If set to true and multiple hosts or workers are configured, the output\cf3 \
+\cf2   # plugin load balances published events onto all Redis hosts. If set to false,\cf3 \
+\cf2   # the output plugin sends all events to only one host (determined at random)\cf3 \
+\cf2   # and will switch to another host if the currently selected one becomes\cf3 \
+\cf2   # unreachable. The default value is true.\cf3 \
+\cf2   #loadbalance: true\cf3 \
+\
+\cf2   # The Redis connection timeout in seconds. The default is 5 seconds.\cf3 \
+\cf2   #timeout: 5s\cf3 \
+\
+\cf2   # The number of times to retry publishing an event after a publishing failure.\cf3 \
+\cf2   # After the specified number of retries, the events are typically dropped.\cf3 \
+\cf2   # Some Beats, such as Filebeat, ignore the max_retries setting and retry until\cf3 \
+\cf2   # all events are published. Set max_retries to a value less than 0 to retry\cf3 \
+\cf2   # until all events are published. The default is 3.\cf3 \
+\cf2   #max_retries: 3\cf3 \
+\
+\cf2   # The number of seconds to wait before trying to reconnect to Redis\cf3 \
+\cf2   # after a network error. After waiting backoff.init seconds, the Beat\cf3 \
+\cf2   # tries to reconnect. If the attempt fails, the backoff timer is increased\cf3 \
+\cf2   # exponentially up to backoff.max. After a successful connection, the backoff\cf3 \
+\cf2   # timer is reset. The default is 1s.\cf3 \
+\cf2   #backoff.init: 1s\cf3 \
+\
+\cf2   # The maximum number of seconds to wait before attempting to connect to\cf3 \
+\cf2   # Redis after a network error. The default is 60s.\cf3 \
+\cf2   #backoff.max: 60s\cf3 \
+\
+\cf2   # The maximum number of events to bulk in a single Redis request or pipeline.\cf3 \
+\cf2   # The default is 2048.\cf3 \
+\cf2   #bulk_max_size: 2048\cf3 \
+\
+\cf2   # The URL of the SOCKS5 proxy to use when connecting to the Redis servers. The\cf3 \
+\cf2   # value must be a URL with a scheme of socks5://.\cf3 \
+\cf2   #proxy_url:\cf3 \
+\
+\cf2   # This option determines whether Redis hostnames are resolved locally when\cf3 \
+\cf2   # using a proxy. The default value is false, which means that name resolution\cf3 \
+\cf2   # occurs on the proxy server.\cf3 \
+\cf2   #proxy_use_local_resolver: false\cf3 \
+\
+\cf2   # Enable SSL support. SSL is automatically enabled, if any SSL setting is set.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # Optional SSL configuration options. SSL is off by default.\cf3 \
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client Certificate Key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the Certificate Key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of renegotiation are supported. Valid options are\cf3 \
+\cf2   # never, once, and freely. Default is never.\cf3 \
+\cf2   #ssl.renegotiation: never\cf3 \
+\
+\cf2 #------------------------------- File output -----------------------------------\cf3 \
+\cf2 #output.file:\cf3 \
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # Configure JSON encoding\cf3 \
+\cf2   #codec.json:\cf3 \
+\cf2     # Pretty-print JSON event\cf3 \
+\cf2     #pretty: false\cf3 \
+\
+\cf2     # Configure escaping HTML symbols in strings.\cf3 \
+\cf2     #escape_html: false\cf3 \
+\
+\cf2   # Path to the directory where to save the generated files. The option is\cf3 \
+\cf2   # mandatory.\cf3 \
+\cf2   #path: "/tmp/filebeat"\cf3 \
+\
+\cf2   # Name of the generated files. The default is `filebeat` and it generates\cf3 \
+\cf2   # files: `filebeat`, `filebeat.1`, `filebeat.2`, etc.\cf3 \
+\cf2   #filename: filebeat\cf3 \
+\
+\cf2   # Maximum size in kilobytes of each file. When this size is reached, and on\cf3 \
+\cf2   # every Filebeat restart, the files are rotated. The default value is 10240\cf3 \
+\cf2   # kB.\cf3 \
+\cf2   #rotate_every_kb: 10000\cf3 \
+\
+\cf2   # Maximum number of files under path. When this number of files is reached,\cf3 \
+\cf2   # the oldest file is deleted and the rest are shifted from last to first. The\cf3 \
+\cf2   # default is 7 files.\cf3 \
+\cf2   #number_of_files: 7\cf3 \
+\
+\cf2   # Permissions to use for file creation. The default is 0600.\cf3 \
+\cf2   #permissions: 0600\cf3 \
+\
+\cf2 #----------------------------- Console output ---------------------------------\cf3 \
+\cf2 #output.console:\cf3 \
+\cf2   # Boolean flag to enable or disable the output module.\cf3 \
+\cf2   #enabled: true\cf3 \
+\
+\cf2   # Configure JSON encoding\cf3 \
+\cf2   #codec.json:\cf3 \
+\cf2     # Pretty-print JSON event\cf3 \
+\cf2     #pretty: false\cf3 \
+\
+\cf2     # Configure escaping HTML symbols in strings.\cf3 \
+\cf2     #escape_html: false\cf3 \
+\
+\cf2 #================================= Paths ======================================\cf3 \
+\
+\cf2 # The home path for the Filebeat installation. This is the default base path\cf3 \
+\cf2 # for all other path settings and for miscellaneous files that come with the\cf3 \
+\cf2 # distribution (for example, the sample dashboards).\cf3 \
+\cf2 # If not set by a CLI flag or in the configuration file, the default for the\cf3 \
+\cf2 # home path is the location of the binary.\cf3 \
+\cf2 #path.home:\cf3 \
+\
+\cf2 # The configuration path for the Filebeat installation. This is the default\cf3 \
+\cf2 # base path for configuration files, including the main YAML configuration file\cf3 \
+\cf2 # and the Elasticsearch template file. If not set by a CLI flag or in the\cf3 \
+\cf2 # configuration file, the default for the configuration path is the home path.\cf3 \
+\cf2 #path.config: $\{path.home\}\cf3 \
+\
+\cf2 # The data path for the Filebeat installation. This is the default base path\cf3 \
+\cf2 # for all the files in which Filebeat needs to store its data. If not set by a\cf3 \
+\cf2 # CLI flag or in the configuration file, the default for the data path is a data\cf3 \
+\cf2 # subdirectory inside the home path.\cf3 \
+\cf2 #path.data: $\{path.home\}/data\cf3 \
+\
+\cf2 # The logs path for a Filebeat installation. This is the default location for\cf3 \
+\cf2 # the Beat's log files. If not set by a CLI flag or in the configuration file,\cf3 \
+\cf2 # the default for the logs path is a logs subdirectory inside the home path.\cf3 \
+\cf2 #path.logs: $\{path.home\}/logs\cf3 \
+\
+\cf2 #================================ Keystore ==========================================\cf3 \
+\cf2 # Location of the Keystore containing the keys and their sensitive values.\cf3 \
+\cf2 #keystore.path: "$\{path.config\}/beats.keystore"\cf3 \
+\
+\cf2 #============================== Dashboards =====================================\cf3 \
+\cf2 # These settings control loading the sample dashboards to the Kibana index. Loading\cf3 \
+\cf2 # the dashboards are disabled by default and can be enabled either by setting the\cf3 \
+\cf2 # options here, or by using the `-setup` CLI flag or the `setup` command.\cf3 \
+\cf2 #setup.dashboards.enabled: false\cf3 \
+\
+\cf2 # The directory from where to read the dashboards. The default is the `kibana`\cf3 \
+\cf2 # folder in the home path.\cf3 \
+\cf2 #setup.dashboards.directory: $\{path.home\}/kibana\cf3 \
+\
+\cf2 # The URL from where to download the dashboards archive. It is used instead of\cf3 \
+\cf2 # the directory if it has a value.\cf3 \
+\cf2 #setup.dashboards.url:\cf3 \
+\
+\cf2 # The file archive (zip file) from where to read the dashboards. It is used instead\cf3 \
+\cf2 # of the directory when it has a value.\cf3 \
+\cf2 #setup.dashboards.file:\cf3 \
+\
+\cf2 # In case the archive contains the dashboards from multiple Beats, this lets you\cf3 \
+\cf2 # select which one to load. You can load all the dashboards in the archive by\cf3 \
+\cf2 # setting this to the empty string.\cf3 \
+\cf2 #setup.dashboards.beat: filebeat\cf3 \
+\
+\cf2 # The name of the Kibana index to use for setting the configuration. Default is ".kibana"\cf3 \
+\cf2 #setup.dashboards.kibana_index: .kibana\cf3 \
+\
+\cf2 # The Elasticsearch index name. This overwrites the index name defined in the\cf3 \
+\cf2 # dashboards and index pattern. Example: testbeat-*\cf3 \
+\cf2 #setup.dashboards.index:\cf3 \
+\
+\cf2 # Always use the Kibana API for loading the dashboards instead of autodetecting\cf3 \
+\cf2 # how to install the dashboards by first querying Elasticsearch.\cf3 \
+\cf2 #setup.dashboards.always_kibana: false\cf3 \
+\
+\cf2 # If true and Kibana is not reachable at the time when dashboards are loaded,\cf3 \
+\cf2 # it will retry to reconnect to Kibana instead of exiting with an error.\cf3 \
+\cf2 #setup.dashboards.retry.enabled: false\cf3 \
+\
+\cf2 # Duration interval between Kibana connection retries.\cf3 \
+\cf2 #setup.dashboards.retry.interval: 1s\cf3 \
+\
+\cf2 # Maximum number of retries before exiting with an error, 0 for unlimited retrying.\cf3 \
+\cf2 #setup.dashboards.retry.maximum: 0\cf3 \
+\
+\
+\cf2 #============================== Template =====================================\cf3 \
+\
+\cf2 # A template is used to set the mapping in Elasticsearch\cf3 \
+\cf2 # By default template loading is enabled and the template is loaded.\cf3 \
+\cf2 # These settings can be adjusted to load your own template or overwrite existing ones.\cf3 \
+\
+\cf2 # Set to false to disable template loading.\cf3 \
+\cf2 #setup.template.enabled: true\cf3 \
+\
+\cf2 # Template name. By default the template name is "filebeat-%\{[agent.version]\}"\cf3 \
+\cf2 # The template name and pattern has to be set in case the Elasticsearch index pattern is modified.\cf3 \
+\cf2 #setup.template.name: "filebeat-%\{[agent.version]\}"\cf3 \
+\
+\cf2 # Template pattern. By default the template pattern is "-%\{[agent.version]\}-*" to apply to the default index se\cf4 \cb3 >\cf3 \cb1 \
+\cf2 # The first part is the version of the beat and then -* is used to match all daily indices.\cf3 \
+\cf2 # The template name and pattern has to be set in case the Elasticsearch index pattern is modified.\cf3 \
+\cf2 #setup.template.pattern: "filebeat-%\{[agent.version]\}-*"\cf3 \
+\
+\cf2 # Path to fields.yml file to generate the template\cf3 \
+\cf2 #setup.template.fields: "$\{path.config\}/fields.yml"\cf3 \
+\
+\cf2 # A list of fields to be added to the template and Kibana index pattern. Also\cf3 \
+\cf2 # specify setup.template.overwrite: true to overwrite the existing template.\cf3 \
+\cf2 # This setting is experimental.\cf3 \
+\cf2 #setup.template.append_fields:\cf3 \
+\cf2 #- name: field_name\cf3 \
+\cf2 #  type: field_type\cf3 \
+\
+\cf2 # Enable JSON template loading. If this is enabled, the fields.yml is ignored.\cf3 \
+\cf2 #setup.template.json.enabled: false\cf3 \
+\
+\cf2 # Path to the JSON template file\cf3 \
+\cf2 #setup.template.json.path: "$\{path.config\}/template.json"\cf3 \
+\
+\cf2 # Name under which the template is stored in Elasticsearch\cf3 \
+\cf2 #setup.template.json.name: ""\cf3 \
+\
+\cf2 # Overwrite existing template\cf3 \
+\cf2 #setup.template.overwrite: false\cf3 \
+\
+\cf2 # Elasticsearch template settings\cf3 \
+setup.template.settings:\
+\
+\cf2   # A dictionary of settings to place into the settings.index dictionary\cf3 \
+\cf2   # of the Elasticsearch template. For more details, please check\cf3 \
+\cf2   # https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html\cf3 \
+\cf2   #index:\cf3 \
+\cf2     #number_of_shards: 1\cf3 \
+\cf2     #codec: best_compression\cf3 \
+\cf2     #number_of_routing_shards: 30\cf3 \
+\
+\cf2   # A dictionary of settings for the _source field. For more details, please check\cf3 \
+\cf2   # https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html\cf3 \
+\cf2   #_source:\cf3 \
+\cf2     #enabled: false\cf3 \
+\
+\cf2 #============================== Setup ILM =====================================\cf3 \
+\
+\cf2 # Configure index lifecycle management (ILM). These settings create a write\cf3 \
+\cf2 # alias and add additional settings to the index template. When ILM is enabled,\cf3 \
+\cf2 # output.elasticsearch.index is ignored, and the write alias is used to set the\cf3 \
+\cf2 # index name.\cf3 \
+\
+\cf2 # Enable ILM support. Valid values are true, false, and auto. When set to auto\cf3 \
+\cf2 # (the default), the Beat uses index lifecycle management when it connects to a\cf3 \
+\cf2 # cluster that supports ILM; otherwise, it creates daily indices.\cf3 \
+\cf2 #setup.ilm.enabled: auto\cf3 \
+\
+\cf2 # Set the prefix used in the index lifecycle write alias name. The default alias\cf3 \
+\cf2 # name is 'filebeat-%\{[agent.version]\}'.\cf3 \
+\cf2 #setup.ilm.rollover_alias: "filebeat"\cf3 \
+\
+\cf2 # Set the rollover index pattern. The default is "%\{now/d\}-000001".\cf3 \
+\cf2 #setup.ilm.pattern: "\{now/d\}-000001"\cf3 \
+\
+\cf2 # Set the lifecycle policy name. The default policy name is\cf3 \
+\cf2 # 'filebeat-%\{[agent.version]\}'.\cf3 \
+\cf2 #setup.ilm.policy_name: "mypolicy"\cf3 \
+\
+\cf2 # The path to a JSON file that contains a lifecycle policy configuration. Used\cf3 \
+\cf2 # to load your own lifecycle policy.\cf3 \
+\cf2 #setup.ilm.policy_file:\cf3 \
+\
+\cf2 # Disable the check for an existing lifecycle policy. The default is false. If\cf3 \
+\cf2 # you disable this check, set setup.ilm.overwrite: true so the lifecycle policy\cf3 \
+\cf2 # can be installed.\cf3 \
+\cf2 #setup.ilm.check_exists: false\cf3 \
+\
+\cf2 # Overwrite the lifecycle policy at startup. The default is false.\cf3 \
+\cf2 #setup.ilm.overwrite: false\cf3 \
+\cf2 #============================== Kibana =====================================\cf3 \
+\
+\cf2 # Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.\cf3 \
+\cf2 # This requires a Kibana endpoint configuration.\cf3 \
+setup.kibana:\
+  host: "10.1.0.4:5601" # TODO: Change this to the IP address of your ELK server\
+\cf2   # Kibana Host\cf3 \
+\cf2   # Scheme and port can be left out and will be set to the default (http and 5601)\cf3 \
+\cf2   # In case you specify and additional path, the scheme is required: http://localhost:5601/path\cf3 \
+\cf2   # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601\cf3 \
+\cf2   #host: "localhost:5601"\cf3 \
+\
+\cf2   # Optional protocol and basic auth credentials.\cf3 \
+\cf2   #protocol: "https"\cf3 \
+\cf2   #username: "elastic"\cf3 \
+\cf2   #password: "changeme"\cf3 \
+\
+\cf2   # Optional HTTP path\cf3 \
+\cf2   #path: ""\cf3 \
+\
+\cf2   # Use SSL settings for HTTPS. Default is true.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions from 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # SSL configuration. The default is off.\cf3 \
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client certificate key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the certificate key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE-based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\
+\
+\cf2 #================================ Logging ======================================\
+# There are four options for the log output: file, stderr, syslog, eventlog\cf3 \
+\cf2 # The file output is the default.\cf3 \
+\
+\cf2 # Sets log level. The default log level is info.\cf3 \
+\cf2 # Available log levels are: error, warning, info, debug\cf3 \
+\cf2 #logging.level: info\cf3 \
+\
+\cf2 # Enable debug output for selected components. To enable all selectors use ["*"]\cf3 \
+\cf2 # Other available selectors are "beat", "publish", "service"\cf3 \
+\cf2 # Multiple selectors can be chained.\cf3 \
+\cf2 #logging.selectors: [ ]\cf3 \
+\
+\cf2 # Send all logging output to stderr. The default is false.\cf3 \
+\cf2 #logging.to_stderr: false\cf3 \
+\
+\cf2 # Send all logging output to syslog. The default is false.\cf3 \
+\cf2 #logging.to_syslog: false\cf3 \
+\
+\cf2 # Send all logging output to Windows Event Logs. The default is false.\cf3 \
+\cf2 #logging.to_eventlog: false\cf3 \
+\
+\cf2 # If enabled, Filebeat periodically logs its internal metrics that have changed\cf3 \
+\cf2 # in the last period. For each metric that changed, the delta from the value at\cf3 \
+\cf2 # the beginning of the period is logged. Also, the total values for\cf3 \
+\cf2 # all non-zero internal metrics are logged on shutdown. The default is true.\cf3 \
+\cf2 #logging.metrics.enabled: true\cf3 \
+\
+\cf2 # The period after which to log the internal metrics. The default is 30s.\cf3 \
+\cf2 #logging.metrics.period: 30s\cf3 \
+\
+\cf2 # Logging to rotating files. Set logging.to_files to false to disable logging to\cf3 \
+\cf2 # files.\cf3 \
+logging.to_files: true\
+logging.files:\
+\cf2   # Configure the path where the logs are written. The default is the logs directory\cf3 \
+\cf2   # under the home path (the binary location).\cf3 \
+\cf2   #path: /var/log/filebeat\cf3 \
+\
+\cf2   # The name of the files where the logs are written to.\cf3 \
+\cf2   #name: filebeat\cf3 \
+\
+\cf2   # Configure log file size limit. If limit is reached, log file will be\cf3 \
+\cf2   # automatically rotated\cf3 \
+\cf2   #rotateeverybytes: 10485760 # = 10MB\cf3 \
+\
+\cf2   # Number of rotated log files to keep. Oldest files will be deleted first.\cf3 \
+\cf2   #keepfiles: 7\cf3 \
+\
+\cf2   # The permissions mask to apply when rotating log files. The default value is 0600.\cf3 \
+\cf2   # Must be a valid Unix-style file permissions mask expressed in octal notation.\cf3 \
+\cf2   #permissions: 0600\cf3 \
+\
+\cf2   # Enable log file rotation on time intervals in addition to size-based rotation.\cf3 \
+\cf2   # Intervals must be at least 1s. Values of 1m, 1h, 24h, 7*24h, 30*24h, and 365*24h\cf3 \
+\cf2   # are boundary-aligned with minutes, hours, days, weeks, months, and years as\cf3 \
+\cf2   # reported by the local system clock. All other intervals are calculated from the\cf3 \
+\cf2   # Unix epoch. Defaults to disabled.\cf3 \
+\cf2   #interval: 0\cf3 \
+\
+\cf2   # Rotate existing logs on startup rather than appending to the existing\cf3 \
+\cf2   # file. Defaults to true.\cf3 \
+\cf2   # rotateonstartup: true\cf3 \
+\
+\cf2 # Set to true to log messages in JSON format.\cf3 \
+\cf2 #logging.json: false\cf3 \
+\
+\
+\cf2 #============================== X-Pack Monitoring ===============================\cf3 \
+\cf2 # Filebeat can export internal metrics to a central Elasticsearch monitoring\cf3 \
+\cf2 # cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The\cf3 \
+\cf2 # reporting is disabled by default.\cf3 \
+\
+\cf2 # Set to true to enable the monitoring reporter.\cf3 \
+\cf2 #monitoring.enabled: false\cf3 \
+\
+\cf2 # Sets the UUID of the Elasticsearch cluster under which monitoring data for this\cf3 \
+\cf2 # Filebeat instance will appear in the Stack Monitoring UI. If output.elasticsearch\cf3 \
+\cf2 # is enabled, the UUID is derived from the Elasticsearch cluster referenced by output.elasticsearch.\cf3 \
+\cf2 #monitoring.cluster_uuid:\cf3 \
+\
+\cf2 # Uncomment to send the metrics to Elasticsearch. Most settings from the\cf3 \
+\cf2 # Elasticsearch output are accepted here as well.\cf3 \
+\cf2 # Note that the settings should point to your Elasticsearch *monitoring* cluster.\cf3 \
+\cf2 # Any setting that is not set is automatically inherited from the Elasticsearch\cf3 \
+\cf2 # output configuration, so if you have the Elasticsearch output configured such\cf3 \
+\cf2 # that it is pointing to your Elasticsearch monitoring cluster, you can simply\cf3 \
+\cf2 # uncomment the following line.\cf3 \
+\cf2 #monitoring.elasticsearch:\cf3 \
+\
+\cf2   # Array of hosts to connect to.\cf3 \
+\cf2   # Scheme and port can be left out and will be set to the default (http and 9200)\cf3 \
+\cf2   # In case you specify and additional path, the scheme is required: http://localhost:9200/path\cf3 \
+\cf2   # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200\cf3 \
+\cf2   #hosts: ["localhost:9200"]\cf3 \
+\
+\cf2   # Set gzip compression level.\cf3 \
+\cf2   #compression_level: 0\cf3 \
+\
+\cf2   # Optional protocol and basic auth credentials.\cf3 \
+\cf2   #protocol: "https"\cf3 \
+\cf2   #username: "beats_system"\cf3 \
+\cf2   #password: "changeme"\cf3 \
+\
+\cf2   # Dictionary of HTTP parameters to pass within the URL with index operations.\cf3 \
+\cf2   #parameters:\cf3 \
+\cf2     #param1: value1\cf3 \
+\cf2     #param2: value2\cf3 \
+\
+\cf2   # Custom HTTP headers to add to each request\cf3 \
+\cf2   #headers:\cf3 \
+\cf2   #  X-My-Header: Contents of the header\cf3 \
+\
+\cf2   # Proxy server url\cf3 \
+\cf2   #proxy_url: http://proxy:3128\cf3 \
+\
+\cf2   # The number of times a particular Elasticsearch index operation is attempted. If\cf3 \
+\cf2   # the indexing operation doesn't succeed after this many retries, the events are\cf3 \
+\cf2   # dropped. The default is 3.\cf3 \
+\cf2   #max_retries: 3\cf3 \
+\
+\cf2   # The maximum number of events to bulk in a single Elasticsearch bulk API index request.\cf3 \
+\cf2   # The default is 50.\cf3 \
+\cf2   #bulk_max_size: 50\cf3 \
+\
+\cf2   # The number of seconds to wait before trying to reconnect to Elasticsearch\cf3 \
+\cf2   # after a network error. After waiting backoff.init seconds, the Beat\cf3 \
+\cf2   # tries to reconnect. If the attempt fails, the backoff timer is increased\cf3 \
+\cf2   # exponentially up to backoff.max. After a successful connection, the backoff\cf3 \
+\cf2   # timer is reset. The default is 1s.\cf3 \
+\cf2   #backoff.init: 1s\cf3 \
+\
+\cf2   # The maximum number of seconds to wait before attempting to connect to\cf3 \
+\cf2   # Elasticsearch after a network error. The default is 60s.\cf3 \
+\cf2   #backoff.max: 60s\cf3 \
+\
+\cf2   # Configure HTTP request timeout before failing an request to Elasticsearch.\cf3 \
+\cf2   #timeout: 90\cf3 \
+\
+\cf2   # Use SSL settings for HTTPS.\cf3 \
+\cf2   #ssl.enabled: true\cf3 \
+\
+\cf2   # Configure SSL verification mode. If `none` is configured, all server hosts\cf3 \
+\cf2   # and certificates will be accepted. In this mode, SSL based connections are\cf3 \
+\cf2   # susceptible to man-in-the-middle attacks. Use only for testing. Default is\cf3 \
+\cf2   # `full`.\cf3 \
+\cf2   #ssl.verification_mode: full\cf3 \
+\
+\cf2   # List of supported/valid TLS versions. By default all TLS versions from 1.0 up to\cf3 \
+\cf2   # 1.2 are enabled.\cf3 \
+\cf2   #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]\cf3 \
+\
+\cf2   # SSL configuration. The default is off.\cf3 \
+\cf2   # List of root certificates for HTTPS server verifications\cf3 \
+\cf2   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf2   # Certificate for SSL client authentication\cf3 \
+\cf2   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf2   # Client certificate key\cf3 \
+\cf2   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf2   # Optional passphrase for decrypting the certificate key.\cf3 \
+\cf2   #ssl.key_passphrase: ''\cf3 \
+\
+\cf2   # Configure cipher suites to be used for SSL connections\cf3 \
+\cf2   #ssl.cipher_suites: []\cf3 \
+\
+\cf2   # Configure curve types for ECDHE-based cipher suites\cf3 \
+\cf2   #ssl.curve_types: []\cf3 \
+\
+\cf2   # Configure what types of renegotiation are supported. Valid options are\cf3 \
+\cf2   # never, once, and freely. Default is never.\cf3 \
+\cf2   #ssl.renegotiation: never\cf3 \
+\
+\cf2   #metrics.period: 10s\cf3 \
+\cf2   #state.period: 1m\cf3 \
+\
+\cf2 #================================ HTTP Endpoint ======================================\cf3 \
+\cf2 # Each beat can expose internal metrics through a HTTP endpoint. For security\cf3 \
+\cf2 # reasons the endpoint is disabled by default. This feature is currently experimental.\cf3 \
+\cf2 # Stats can be access through http://localhost:5066/stats . For pretty JSON output\cf3 \
+\cf2 # append ?pretty to the URL.\cf3 \
+\
+\cf2 # Defines if the HTTP endpoint is enabled.\cf3 \
+\cf2 #http.enabled: false\cf3 \
+\
+\cf2 # The HTTP endpoint will bind to this hostname, IP address, unix socket or named pipe.\cf3 \
+\cf2 # When using IP addresses, it is recommended to only use localhost.\cf3 \
+\cf2 #http.host: localhost\cf3 \
+\
+\cf2 # Port on which the HTTP endpoint will bind. Default is 5066.\cf3 \
+\cf2 #http.port: 5066\cf3 \
+\
+\cf2 # Define which user should be owning the named pipe.\cf3 \
+\cf2 #http.named_pipe.user:\cf3 \
+\
+\cf2 # Define which the permissions that should be applied to the named pipe, use the Security\cf3 \
+\cf2 # Descriptor Definition Language (SDDL) to define the permission. This option cannot be used with\cf3 \
+\cf2 # `http.user`.\cf3 \
+\cf2 #http.named_pipe.security_descriptor:\cf3 \
+\
+\cf2 #============================= Process Security ================================\cf3 \
+\
+\cf2 # Enable or disable seccomp system call filtering on Linux. Default is enabled.\cf3 \
+\cf2 #seccomp.enabled: true\cf3 \
+\
+\cf2 #================================= Migration ==================================\cf3 \
+\
+\cf2 # This allows to enable 6.7 migration aliases\cf3 \
+\cf2 #migration.6_to_7.enabled: false\cf3 \
+\
+\
+}
